@@ -53,5 +53,7 @@ combined[["SubjectNum"]] <- as.factor(combined[, SubjectNum])
 combined <- melt(data = combined, id = c("SubjectNum", "Activity"))
 combined <- dcast(data = combined, SubjectNum + Activity ~ variable, fun.aggregate = mean)
 
-fwrite(x = combined, file.path(path, "UCI HAR Dataset/tidy_data.txt"), quote = FALSE)
+write.table(x = combined, 
+            file.path(path, "UCI HAR Dataset/tidy_data.txt"), 
+            row.names = FALSE)
 
